@@ -1,5 +1,7 @@
 # Image uploader project
 
+is old and will not be developed further
+
 ### Add image through the console
 
 ```ruby
