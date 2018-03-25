@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+filename = ARGV[0]
+pieces = filename.split('.')
+
+# donald.png donald_halfsize.png
+if filename.include?('halfsize')
+  new_filename = filename
+else
+  new_filename = pieces[0] + '_halfsize.' + pieces[1]
+end
+
+system("convert #{filename} -resize 50% #{new_filename}")
+system("open #{new_filename}")

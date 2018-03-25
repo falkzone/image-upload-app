@@ -1,0 +1,19 @@
+<%= remotipart_response do %>
+  var $newImage = $('<div>')
+  $newImage.append(
+    '<h2>' +
+    "** NEW **" +
+    "<%= j(@scrap.read_attribute(:image)) %>" +
+    '</h2>'
+  )
+
+  $newImage.append(
+    "<%= j(image_tag(@scrap.image.url(:fill_thumb))) %>"
+  )
+
+  $newImage.append(
+    "<%= j(image_tag(@scrap.image.url(:fit_thumb))) %>"
+  )
+
+  $('body').append($newImage)
+<% end %>

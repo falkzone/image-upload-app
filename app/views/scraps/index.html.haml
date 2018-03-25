@@ -1,0 +1,19 @@
+#new-scrap-form.image-form
+  = form_for Scrap.new do |f|
+    = f.file_field :image
+    = f.submit
+
+- @scraps.each do |scrap|
+  %p
+    - if scrap.image.present?
+      %h2= scrap.read_attribute(:image)
+      = image_tag scrap.image.url(:fill_thumb)
+      = image_tag scrap.image.url(:fit_thumb)
+    - elsif scrap.text_file.present?
+      %h2= scrap.read_attribute(:text_file)
+      = link_to scrap.text_file.url, scrap.text_file.url
+
+:javascript
+  window.scrapImageForm = new ScrapImageForm('#new-scrap-form', {
+    submitUrl: "#{scraps_path(format: 'js')}"
+  })
